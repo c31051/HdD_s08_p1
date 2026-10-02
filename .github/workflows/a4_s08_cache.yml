@@ -1,6 +1,8 @@
 name: a4_s08_cache
 on:
   workflow_dispatch:
+permissions:
+  actions: write
 jobs:
   activar-otro:
     runs-on: ubuntu-latest
