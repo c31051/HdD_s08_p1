@@ -7,4 +7,4 @@ jobs:
   recibir-llamada:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "El workflow se ha ejecutado correctamente."
+      - run: echo "El workflow se ejecutó."
