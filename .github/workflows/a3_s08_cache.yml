@@ -29,11 +29,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Cache
-        uses: actions/cache@v4
-        with:
-          path: carpeta_descarga
-          key: mi-archivo-pesado
+#      - name: Cache
+#        uses: actions/cache@v4
+#        with:
+#          path: carpeta_descarga
+#          key: mi-archivo-pesado
 
       - name: Descargar
         run: |
@@ -44,8 +44,7 @@ jobs:
             if [ -f "$archivo" ]; then
               echo "txt $i ok"
             else
-              # Escribimos texto real dentro del archivo para que tenga peso (bytes)
-              echo "Este es el texto del archivo numero $i" > "$archivo"
+              echo "Realizado" > "$archivo"
               echo "descarga txt ok."
             fi
           done
