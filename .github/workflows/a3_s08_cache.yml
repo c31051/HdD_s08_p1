@@ -42,7 +42,7 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # O la versión que uses
+          node-version: '24' # O la versión que uses
 
       - name: Instalar dependencias sin cache
         run: |
