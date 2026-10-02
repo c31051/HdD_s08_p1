@@ -32,19 +32,19 @@ jobs:
       - name: Cache
         uses: actions/cache@v4
         with:
-          path: carpeta_descargas
+          path: carpeta_descarga
           key: mi-archivo-pesado
 
       - name: Descargar
         run: |
-          for i in {1..10}
+          mkdir -p carpeta_descarga
+          for i in {1..5}
           do
-          if [ -f carpeta_descargas/archivo_grande.txt ]; then
-            echo "txt ok"
+          archivo="descargas_loop/txt_$i.txt"
+          if [ -f $archivo ]; then
+            echo "txt $i ok"
           else
-            echo "caché vacía, descargando txt grande..."
-            mkdir -p carpeta_descargas
-            curl -L -o carpeta_descargas/archivo_grande.txt https://hetzner.de
+            curl -L -o $archivo https://hetzner.de
             echo "descarga txt ok."
           fi
           done
