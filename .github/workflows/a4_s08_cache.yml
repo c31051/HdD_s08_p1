@@ -7,13 +7,17 @@ jobs:
   activar-otro:
     runs-on: ubuntu-latest
     steps:
-      - name: Activar Flujo Destino
+      - name: Activar Flujo Destino 1
         uses: actions/github-script@v7
         with:
           script: |
             await github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
               workflow_id: 'a2_s08_inicio.yml',
               ref: 'main'
             })
+
+      - name: Activar Flujo Destino 2
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: a2_s08_inicio.yml
+          token: ${{ secrets.GITHUB_TOKEN }}
