@@ -1,12 +1,10 @@
 name: a2_s08_inicio
 
 on:
-  schedule:
-    - cron: '*/5 * * * *'
+  workflow_dispatch:
 
 jobs:
-  tarea-cron:
+  recibir-llamada:
     runs-on: ubuntu-latest
     steps:
-      - name: Ejecutar script de prueba
-        run: echo "El workflow se ha ejecutado correctamente."
+      - run: echo "El workflow se ha ejecutado correctamente."

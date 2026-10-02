@@ -2,6 +2,10 @@ name: a3_s08_cache
 on:
   workflow_dispatch:
 
+# npm -v
+# npm install
+# npm init -y
+
 jobs:
   node_cache:
     name: ejemplo_node
@@ -14,7 +18,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '24'
-          cache: 'npm' # ACTIVA LA CACHÉ
+          cache: 'npm'
 
       - name: Instalar dependencias
         run: |
@@ -45,26 +49,6 @@ jobs:
               echo "cache ejecutado $i"
             else
               echo "Realizado" > "$archivo"
-              echo "Actividades demoradas $i."
+              echo "Actividades tardadas $i."
             fi
           done
-
-#      - name: Cache
-#        uses: actions/cache@v4
-#        with:
-#          path: carpeta_descarga
-#          key: mi-archivo-pesado
-#
-#      - name: Descargar
-#        run: |
-#          mkdir -p carpeta_descarga
-#          for i in {1..9}
-#          do
-#          archivo="carpeta_descarga/txt_$i.txt"
-#          if [ -f "$archivo" ]; then
-#            echo "txt $i ok"
-#          else
-#            curl -L -o "$archivo" https://hetzner.de
-#            echo "descarga txt ok."
-#          fi
-#          done

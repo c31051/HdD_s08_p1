@@ -1,51 +1,17 @@
 name: a4_s08_cache
 on:
   workflow_dispatch:
-
 jobs:
-  a4_s08_con_cache:
+  activar-otro:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      # Generamos un package.json y package-lock.json ficticios con dependencias reales para la prueba
-      - name: Crear entorno Node de prueba
-        run: |
-          echo '{"name": "prueba-cache", "version": "1.0.0", "dependencies": {"lodash": "^4.17.21", "express": "^4.19.2"}}' > package.json
-          npm install --package-lock-only
-
-      # Configuramos Node y activamos la cache nativa
-      - name: Configurar Node.js con Cache
-        uses: actions/setup-node@v4
+      - name: Activar Flujo Destino
+        uses: actions/github-script@v7
         with:
-          node-version: '24'
-          cache: 'npm' # <--- ESTO ACTIVA LA CACHÉ
-
-      - name: Instalar dependencias con cache
-        run: |
-          npm ci
-          echo "Ejecución completada usando o creando la caché de npm."
-
-  a4_s08_sin_cache:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      # Generamos el mismo entorno ficticio
-      - name: Crear entorno Node de prueba
-        run: |
-          echo '{"name": "prueba-cache", "version": "1.0.0", "dependencies": {"lodash": "^4.17.21", "express": "^4.19.2"}}' > package.json
-          npm install --package-lock-only
-
-      # Configuramos Node pero SIN la línea de caché
-      - name: Configurar Node.js sin Cache
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-
-      - name: Instalar dependencias sin cache
-        run: |
-          npm ci
-          echo "Ejecución completada descargando todo desde cero cada vez."
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'a2_s08_inicio.yml',
+              ref: 'main'
+            })
