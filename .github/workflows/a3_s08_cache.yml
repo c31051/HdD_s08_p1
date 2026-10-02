@@ -42,10 +42,10 @@ jobs:
           do
             archivo="carpeta_descarga/txt_$i.txt"
             if [ -f "$archivo" ]; then
-              echo "txt $i ok"
+              echo "cache txt $i"
             else
               echo "Realizado" > "$archivo"
-              echo "descarga txt ok."
+              echo "Actividades $i realizadas."
             fi
           done
 
