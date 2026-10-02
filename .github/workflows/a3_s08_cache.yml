@@ -37,6 +37,8 @@ jobs:
 
       - name: Descargar
         run: |
+          for i in {1..5}
+          do
           if [ -f carpeta_descargas/archivo_grande.txt ]; then
             echo "txt ok"
           else
@@ -45,3 +47,4 @@ jobs:
             curl -L -o carpeta_descargas/archivo_grande.txt https://hetzner.de
             echo "descarga txt ok."
           fi
+          done
