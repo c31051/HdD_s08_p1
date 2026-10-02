@@ -33,7 +33,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: carpeta_descarga
-          key: mi-archivo-pesado
+          key: mi-archivo-pesado-v2
 
       - name: Descargar
         run: |
