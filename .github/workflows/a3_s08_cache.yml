@@ -40,11 +40,32 @@ jobs:
           mkdir -p carpeta_descarga
           for i in {1..9}
           do
-          archivo="carpeta_descarga/txt_$i.txt"
-          if [ -f "$archivo" ]; then
-            echo "txt $i ok"
-          else
-            curl -L -o "$archivo" https://hetzner.de
-            echo "descarga txt ok."
-          fi
+            archivo="carpeta_descarga/txt_$i.txt"
+            if [ -f "$archivo" ]; then
+              echo "txt $i ok"
+            else
+              # Escribimos texto real dentro del archivo para que tenga peso (bytes)
+              echo "Este es el texto del archivo numero $i" > "$archivo"
+              echo "descarga txt ok."
+            fi
           done
+
+#      - name: Cache
+#        uses: actions/cache@v4
+#        with:
+#          path: carpeta_descarga
+#          key: mi-archivo-pesado
+#
+#      - name: Descargar
+#        run: |
+#          mkdir -p carpeta_descarga
+#          for i in {1..9}
+#          do
+#          archivo="carpeta_descarga/txt_$i.txt"
+#          if [ -f "$archivo" ]; then
+#            echo "txt $i ok"
+#          else
+#            curl -L -o "$archivo" https://hetzner.de
+#            echo "descarga txt ok."
+#          fi
+#          done
