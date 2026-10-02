@@ -3,8 +3,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  a3_s08_sin_cache:
-    name: Ejemplo_cache
+  node_cache:
+    name: ejemplo_node
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -14,12 +14,28 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '24'
-          # cache: 'npm'
+          cache: 'npm' # ACTIVA LA CACHÉ
 
       - name: Instalar dependencias
         run: |
           npm ci
-          echo "job sin cache: descarga las dependencias cada vez"
+          npm i express
+          echo "npm ok"
 
-      - name: Instalar dependencias
-        run: npm i express
+  txt_keycache:
+    name: ejemplo_txt
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Descargar
+        run: |
+          if [ -f carpeta_descargas/archivo_grande.txt ]; then
+            echo "txt ok"
+          else
+            echo "caché vacía, descargando txt grande..."
+            mkdir -p carpeta_descargas
+            curl -L -o carpeta_descargas/archivo_grande.txt https://hetzner.de
+            echo "descarga txt ok."
+          fi
