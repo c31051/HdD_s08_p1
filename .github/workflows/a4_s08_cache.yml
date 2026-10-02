@@ -12,6 +12,8 @@ jobs:
         with:
           script: |
             await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
               workflow_id: 'a2_s08_inicio.yml',
               ref: 'main'
             })
