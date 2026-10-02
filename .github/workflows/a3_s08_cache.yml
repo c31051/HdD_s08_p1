@@ -1,0 +1,46 @@
+name: a3_s08_cache
+on:
+  workflow_dispatch:
+    inputs:
+      nombre:
+        description: 'Nombre del estudiante'
+        required: true
+        default: 'Romel'
+      correo:
+        description: 'Correo del estudiante'
+        required: true
+        default: 'c31051@utp.edu.pe'
+
+jobs:
+#  a3_s08_cache:
+#    name: Con cache
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v4
+#
+#      - name: Cache de dependencias
+#        uses: actions/cache@v4
+#        with:
+#          path: ~/.npm
+#          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+#          restore-keys: |
+#            ${{ runner.os }}-node-
+#
+#      - name: Instalar dependencias con cache
+#        run: |
+#          npm ci
+#          echo "Job con cache: usa la caché de dependencias"
+
+  a3_s08_sin_cache:
+    name: Sin cache
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Instalar dependencias sin cache
+        run: |
+          npm ci
+          echo "Job sin cache: descarga las dependencias cada vez"
+
