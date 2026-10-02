@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  a3_s08_con_cache:
+  a4_s08_con_cache:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -19,7 +19,7 @@ jobs:
       - name: Configurar Node.js con Cache
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm' # <--- ESTO ACTIVA LA CACHÉ
 
       - name: Instalar dependencias con cache
@@ -27,7 +27,7 @@ jobs:
           npm ci
           echo "Ejecución completada usando o creando la caché de npm."
 
-  a3_s08_sin_cache:
+  a4_s08_sin_cache:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -43,7 +43,7 @@ jobs:
       - name: Configurar Node.js sin Cache
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Instalar dependencias sin cache
         run: |
