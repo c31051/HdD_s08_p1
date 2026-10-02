@@ -38,7 +38,7 @@ jobs:
       - name: Descargar
         run: |
           mkdir -p carpeta_descarga
-          for i in {1..5}
+          for i in {1..9}
           do
           archivo="txt_$i.txt"
           if [ -f $archivo ]; then
