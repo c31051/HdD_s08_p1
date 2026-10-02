@@ -41,10 +41,10 @@ jobs:
           for i in {1..9}
           do
           archivo="carpeta_descarga/txt_$i.txt"
-          if [ -f $archivo ]; then
+          if [ -f "$archivo" ]; then
             echo "txt $i ok"
           else
-            curl -L -o $archivo https://hetzner.de
+            curl -L -o "$archivo" https://hetzner.de
             echo "descarga txt ok."
           fi
           done
