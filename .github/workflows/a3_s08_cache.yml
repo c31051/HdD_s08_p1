@@ -29,15 +29,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Cache
-        uses: actions/cache@v4
-        with:
-          path: carpeta_descargas
-          key: mi-archivo-pesado
+#      - name: Cache
+#        uses: actions/cache@v4
+#        with:
+#          path: carpeta_descargas
+#          key: mi-archivo-pesado
 
       - name: Descargar
         run: |
-          for i in {1..5}
+          for i in {1..10}
           do
           if [ -f carpeta_descargas/archivo_grande.txt ]; then
             echo "txt ok"
