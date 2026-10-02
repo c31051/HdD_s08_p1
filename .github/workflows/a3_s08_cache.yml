@@ -42,5 +42,5 @@ jobs:
       - name: Instalar dependencias sin cache
         run: |
           npm ci
-          echo "Job sin cache: descarga las dependencias cada vez"
+          echo "job sin cache: descarga las dependencias cada vez"
 
