@@ -40,7 +40,7 @@ jobs:
           mkdir -p carpeta_descarga
           for i in {1..5}
           do
-          archivo="descargas_loop/txt_$i.txt"
+          archivo="txt_$i.txt"
           if [ -f $archivo ]; then
             echo "txt $i ok"
           else
